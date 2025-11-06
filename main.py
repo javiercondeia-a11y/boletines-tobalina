@@ -5,8 +5,8 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 SEARCH_TERM = "Valle de Tobalina"
-RECIPIENT_EMAIL = "Condepromediano@gmail.com"
-SENDER_EMAIL = "Condepromediano@gmail.com"
+RECIPIENT_EMAIL = "valledetobalinaboletines@gmail.com"
+SENDER_EMAIL = "valledetobalinaboletines@gmail.com"
 APP_PASSWORD = "AQUÍ_VA_LA_CONTRASEÑA_DE_APLICACIÓN_DE_GMAIL"
 
 BOLETINES = {
