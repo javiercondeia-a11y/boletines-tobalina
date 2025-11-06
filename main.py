@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import os
 import requests
 import datetime
 import smtplib
@@ -6,9 +7,9 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 SEARCH_TERM = "Valle de Tobalina"
-RECIPIENT_EMAIL = "valledetobalinaboletines@gmail.com"
-SENDER_EMAIL = "valledetobalinaboletines@gmail.com"
-APP_PASSWORD = "AQUÍ_VA_LA_CONTRASEÑA_DE_APLICACIÓN_DE_GMAIL"
+RECIPIENT_EMAIL = os.getenv("EMAIL_DESTINO")
+SENDER_EMAIL = os.getenv("EMAIL_REMITENTE")
+APP_PASSWORD = os.getenv("EMAIL_PASSWORD")
 
 BOLETINES = {
     "BOE": f"https://www.boe.es/buscar/boe.php?campo%5B0%5D=todos&operador%5B0%5D=and&valor%5B0%5D={SEARCH_TERM}",
@@ -46,6 +47,7 @@ def enviar_correo(resultados):
     msg.attach(MIMEText(cuerpo, "plain", "utf-8"))
 
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+        print(f"Intentando login con usuario: {SENDER_EMAIL}, longitud pass: {len(APP_PASSWORD)}")
         server.login(SENDER_EMAIL, APP_PASSWORD)
         server.send_message(msg)
 
