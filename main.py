@@ -51,4 +51,4 @@ def enviar_correo(resultados):
 
 if __name__ == "__main__":
     resultados = buscar_boletines()
-    enviar_correo(resulta_
+    enviar_correo(resultados)
