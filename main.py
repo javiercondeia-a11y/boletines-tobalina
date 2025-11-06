@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import requests
 import datetime
 import smtplib
@@ -22,7 +23,8 @@ def buscar_boletines():
             r = requests.get(url, timeout=20)
             if SEARCH_TERM.lower() in r.text.lower():
                 resultados[nombre] = url
-        except:
+        except Exception as e:
+            print(f"Error al buscar en {nombre}: {e}")
             continue
     return resultados
 
@@ -49,4 +51,4 @@ def enviar_correo(resultados):
 
 if __name__ == "__main__":
     resultados = buscar_boletines()
-    enviar_correo(resultados)
+    enviar_correo(resulta_
